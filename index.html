@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dota 2 Био</title>
+    <title>Dota 2 | Инвокер 29 уровня</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Oxanium:wght@400;600;700&family=Roboto:wght@300;400;700&display=swap');
         
         :root {
             --orange: #FF5722;
@@ -13,19 +14,23 @@
             --black: #121212;
             --dark-gray: #1E1E1E;
             --light-gray: #2C2C2C;
+            --gold: #FFD700;
         }
         
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Roboto', sans-serif;
         }
         
         body {
             background-color: var(--black);
             color: white;
             overflow-x: hidden;
+            font-family: 'Roboto', sans-serif;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(230, 74, 25, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 90% 60%, rgba(255, 87, 34, 0.1) 0%, transparent 20%);
         }
         
         header {
@@ -47,16 +52,25 @@
         }
         
         .logo {
-            font-size: 28px;
+            font-family: 'Oxanium', cursive;
+            font-size: 32px;
             font-weight: 900;
             color: var(--orange);
             text-transform: uppercase;
             letter-spacing: 2px;
             animation: pulse 2s infinite;
+            display: flex;
+            align-items: center;
         }
         
         .logo span {
             color: white;
+            margin-left: 5px;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            font-size: 28px;
         }
         
         .nav-links {
@@ -74,6 +88,7 @@
             font-weight: 700;
             transition: color 0.3s;
             position: relative;
+            font-family: 'Oxanium', cursive;
         }
         
         .nav-links a:hover {
@@ -103,67 +118,99 @@
             align-items: center;
             text-align: center;
             padding: 0 20px;
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect fill="%23121212" width="100" height="100"/><path fill="%23E64A19" opacity="0.2" d="M0 0h100v100H0z"/><path fill="%23FF5722" opacity="0.2" d="M0 0h50v50H0z"/></svg>');
-            background-size: cover;
-            position: relative;
-        }
-        
-        .hero h1 {
-            font-size: 4rem;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            animation: fadeInDown 1s ease;
-        }
-        
-        .hero h1 span {
-            color: var(--orange);
-        }
-        
-        .hero p {
-            font-size: 1.5rem;
-            max-width: 800px;
-            margin-bottom: 30px;
-            animation: fadeInUp 1s ease;
-        }
-        
-        .cta-button {
-            padding: 15px 40px;
-            background-color: var(--orange);
-            color: white;
-            border: none;
-            border-radius: 30px;
-            font-size: 1.2rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s;
-            animation: pulse 2s infinite;
-            text-decoration: none;
-            display: inline-block;
-        }
-        
-        .cta-button:hover {
-            background-color: var(--dark-orange);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(230, 74, 25, 0.4);
-        }
-        
-        section {
-            padding: 100px 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .about {
-            background-color: var(--dark-gray);
-            border-radius: 20px;
-            margin: 50px auto;
-            padding: 50px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
             position: relative;
             overflow: hidden;
         }
         
-        .about::before {
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 75% 25%, rgba(230, 74, 25, 0.2) 0%, transparent 30%),
+                radial-gradient(circle at 25% 75%, rgba(255, 87, 34, 0.2) 0%, transparent 30%);
+            z-index: -1;
+        }
+        
+        .hero-content {
+            max-width: 900px;
+            z-index: 2;
+        }
+        
+        .hero h1 {
+            font-family: 'Oxanium', cursive;
+            font-size: 5rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            animation: fadeInDown 1s ease;
+            text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+            background: linear-gradient(to right, var(--orange), var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            animation: fadeInUp 1s ease;
+            max-width: 800px;
+            line-height: 1.6;
+        }
+        
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 40px;
+            animation: fadeInUp 1.2s ease;
+        }
+        
+        .hero-stat {
+            background: rgba(30, 30, 30, 0.8);
+            padding: 15px 25px;
+            border-radius: 10px;
+            border-left: 4px solid var(--orange);
+            text-align: center;
+            min-width: 200px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s;
+        }
+        
+        .hero-stat:hover {
+            transform: translateY(-5px);
+        }
+        
+        .hero-stat h3 {
+            font-size: 2.5rem;
+            color: var(--orange);
+            margin-bottom: 5px;
+            font-family: 'Oxanium', cursive;
+        }
+        
+        .hero-stat p {
+            font-size: 1rem;
+            margin: 0;
+            animation: none;
+        }
+        
+        .invoker-spotlight {
+            background-color: var(--dark-gray);
+            border-radius: 20px;
+            margin: 80px auto;
+            padding: 60px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            position: relative;
+            overflow: hidden;
+            max-width: 1200px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .invoker-spotlight::before {
             content: '';
             position: absolute;
             top: 0;
@@ -173,103 +220,173 @@
             background: linear-gradient(to right, var(--orange), var(--black));
         }
         
-        .about h2 {
-            font-size: 2.5rem;
-            margin-bottom: 30px;
-            color: var(--orange);
-            text-align: center;
-        }
-        
-        .about p {
-            font-size: 1.2rem;
-            line-height: 1.6;
-            margin-bottom: 20px;
-            text-align: justify;
-        }
-        
-        .dota-stats {
+        .invoker-header {
             display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            margin-top: 50px;
+            align-items: center;
+            margin-bottom: 40px;
         }
         
-        .stat {
-            background-color: var(--light-gray);
-            padding: 30px;
-            border-radius: 10px;
-            text-align: center;
-            margin: 10px;
-            flex: 1;
-            min-width: 250px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s;
+        .invoker-icon {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(45deg, var(--dark-orange), var(--orange));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 30px;
+            border: 4px solid var(--gold);
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+            animation: glow 2s infinite alternate;
         }
         
-        .stat:hover {
-            transform: translateY(-10px);
+        .invoker-icon i {
+            font-size: 60px;
+            color: white;
         }
         
-        .stat h3 {
+        .invoker-title h2 {
+            font-family: 'Oxanium', cursive;
+            font-size: 3rem;
             color: var(--orange);
-            font-size: 2rem;
             margin-bottom: 10px;
         }
         
-        .jokes {
-            background-color: var(--black);
-            text-align: center;
-            padding: 80px 20px;
+        .invoker-title p {
+            font-size: 1.2rem;
+            color: #ccc;
         }
         
-        .jokes h2 {
-            font-size: 2.5rem;
-            margin-bottom: 50px;
+        .abilities {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .ability {
+            background: var(--light-gray);
+            padding: 20px;
+            border-radius: 10px;
+            width: 160px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+        
+        .ability:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(255, 87, 34, 0.3);
+        }
+        
+        .ability-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, var(--dark-gray), var(--light-gray));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            border: 2px solid var(--orange);
+        }
+        
+        .ability-icon i {
+            font-size: 24px;
             color: var(--orange);
         }
         
-        .joke-container {
-            background-color: var(--dark-gray);
+        .ability h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--orange);
+            font-family: 'Oxanium', cursive;
+        }
+        
+        .ability p {
+            font-size: 0.9rem;
+            color: #ccc;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+            width: 100%;
+        }
+        
+        .stat-card {
+            background: var(--light-gray);
             padding: 30px;
-            border-radius: 10px;
-            margin-bottom: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         }
         
-        .joke {
-            font-size: 1.5rem;
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--orange), var(--dark-orange));
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .stat-card i {
+            font-size: 40px;
+            color: var(--orange);
             margin-bottom: 20px;
-            min-height: 80px;
         }
         
-        .new-joke {
-            padding: 15px 40px;
-            background-color: var(--orange);
-            color: white;
-            border: none;
-            border-radius: 30px;
-            font-size: 1.2rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s;
+        .stat-card h3 {
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin-bottom: 10px;
+            font-family: 'Oxanium', cursive;
         }
         
-        .new-joke:hover {
-            background-color: var(--dark-orange);
-            transform: scale(1.05);
+        .stat-card p {
+            font-size: 1.1rem;
+            color: #ccc;
         }
         
-        .social {
+        .progress-bar {
+            height: 10px;
+            background: var(--dark-gray);
+            border-radius: 5px;
+            margin-top: 15px;
+            overflow: hidden;
+        }
+        
+        .progress {
+            height: 100%;
+            background: linear-gradient(to right, var(--orange), var(--gold));
+            border-radius: 5px;
+            width: 0;
+            transition: width 1.5s ease-in-out;
+        }
+        
+        .social-section {
             text-align: center;
             padding: 80px 20px;
-            background-color: var(--dark-gray);
+            background: var(--dark-gray);
             border-radius: 20px;
-            margin: 50px auto;
+            margin: 80px auto;
+            max-width: 1200px;
         }
         
-        .social h2 {
+        .social-section h2 {
+            font-family: 'Oxanium', cursive;
             font-size: 2.5rem;
             margin-bottom: 30px;
             color: var(--orange);
@@ -279,22 +396,30 @@
             display: flex;
             justify-content: center;
             gap: 30px;
+            flex-wrap: wrap;
         }
         
         .social-link {
-            display: inline-block;
+            display: flex;
+            align-items: center;
             padding: 15px 30px;
-            background-color: var(--orange);
+            background: linear-gradient(45deg, var(--dark-orange), var(--orange));
             color: white;
             text-decoration: none;
-            border-radius: 30px;
+            border-radius: 50px;
             font-weight: 700;
             transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(230, 74, 25, 0.3);
         }
         
         .social-link:hover {
-            background-color: var(--dark-orange);
-            transform: translateY(-5px);
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 10px 20px rgba(230, 74, 25, 0.5);
+        }
+        
+        .social-link i {
+            margin-right: 10px;
+            font-size: 24px;
         }
         
         footer {
@@ -302,17 +427,39 @@
             padding: 30px;
             text-align: center;
             border-top: 2px solid var(--orange);
+            margin-top: 80px;
         }
         
-        .dota-icon {
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .particle {
             position: absolute;
-            width: 100px;
-            height: 100px;
-            opacity: 0.1;
-            background-size: contain;
-            background-repeat: no-repeat;
+            background: var(--orange);
+            border-radius: 50%;
+            opacity: 0;
+            animation: particle-anim 15s linear infinite;
         }
         
+        @keyframes particle-anim {
+            0% {
+                transform: translateY(0) translateX(0) scale(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-1000px) translateX(100px) scale(1);
+                opacity: 0;
+            }
+        }
+        
+        /* Анимации */
         @keyframes pulse {
             0% {
                 transform: scale(1);
@@ -347,6 +494,15 @@
             }
         }
         
+        @keyframes glow {
+            from {
+                box-shadow: 0 0 20px rgba(255, 87, 34, 0.5);
+            }
+            to {
+                box-shadow: 0 0 40px rgba(255, 87, 34, 0.8), 0 0 70px rgba(255, 87, 34, 0.6);
+            }
+        }
+        
         .fade-in {
             opacity: 0;
             transform: translateY(50px);
@@ -358,6 +514,7 @@
             transform: translateY(0);
         }
         
+        /* Адаптивность */
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
@@ -371,8 +528,18 @@
                 font-size: 1.2rem;
             }
             
-            .dota-stats {
+            .invoker-header {
                 flex-direction: column;
+                text-align: center;
+            }
+            
+            .invoker-icon {
+                margin-right: 0;
+                margin-bottom: 20px;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
             }
             
             .social-links {
@@ -380,88 +547,146 @@
                 align-items: center;
             }
         }
-        
-        .dota-particle {
-            position: fixed;
-            pointer-events: none;
-            opacity: 0;
-            animation: particle-anim 2s ease-in-out;
-        }
-        
-        @keyframes particle-anim {
-            0% {
-                opacity: 1;
-                transform: translate(0, 0) scale(0.5);
-            }
-            100% {
-                opacity: 0;
-                transform: translate(var(--x), var(--y)) scale(1.5);
-            }
-        }
     </style>
 </head>
 <body>
+    <div class="particles" id="particles"></div>
+    
     <header>
         <nav>
-            <div class="logo">Dota<span>2</span>Hub</div>
+            <div class="logo"><i class="fas fa-fire"></i>Dota<span>2</span>Hub</div>
             <ul class="nav-links">
-                <li><a href="#about">Обо мне</a></li>
+                <li><a href="#invoker">Инвокер</a></li>
                 <li><a href="#stats">Статистика</a></li>
-                <li><a href="#jokes">Приколы</a></li>
+                <li><a href="#abilities">Способности</a></li>
                 <li><a href="#social">Контакты</a></li>
             </ul>
         </nav>
     </header>
 
     <section class="hero">
-        <h1>Добро пожаловать в мир <span>Dota 2</span></h1>
-        <p>Здесь живут эпические битвы, стратегии и бесконечный fun! Присоединяйся к сообществу настоящих ценителей игры.</p>
-        <a href="#about" class="cta-button">Узнать больше</a>
-    </section>
-
-    <section id="about" class="about fade-in">
-        <h2>Обо мне</h2>
-        <p>Я страстный поклонник Dota 2 с многолетним опытом игры. Моя любовь к этой игре началась ещё с оригинальной DotA, и с момента выхода Dota 2 я не пропустил ни одного крупного обновления.</p>
-        <p>Мой игровой стиль — это комбинация стратегического мышления и молниеносных решений. Я предпочитаю играть за гибридных героев, которые могут адаптироваться к любой ситуации на поле боя.</p>
-        <p>В свободное от игры время я люблю анализировать матчи профессиональных игроков, изучать новые тактики и делиться своими знаниями с сообществом. Dota 2 — это не просто игра, это целая вселенная, в которой я нашел себя.</p>
-    </section>
-
-    <section id="stats" class="about fade-in">
-        <h2>Моя статистика в Dota 2</h2>
-        <div class="dota-stats">
-            <div class="stat">
-                <h3>5000+</h3>
-                <p>Сыгранных матчей</p>
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <h1>Мастер Инвокера</h1>
+            <p>29 уровень, 3400 MMR, 3100 игр, 52% побед. Эксперт в контроле магии и тактическом превосходстве на поле боя.</p>
+            
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <h3>29</h3>
+                    <p>Уровень героя</p>
+                </div>
+                <div class="hero-stat">
+                    <h3>3400</h3>
+                    <p>MMR рейтинг</p>
+                </div>
+                <div class="hero-stat">
+                    <h3>3100</h3>
+                    <p>Сыграно игр</p>
+                </div>
+                <div class="hero-stat">
+                    <h3>52%</h3>
+                    <p>Побед</p>
+                </div>
             </div>
-            <div class="stat">
-                <h3>58%</h3>
+        </div>
+    </section>
+
+    <section id="invoker" class="invoker-spotlight fade-in">
+        <div class="invoker-header">
+            <div class="invoker-icon">
+                <i class="fas fa-hat-wizard"></i>
+            </div>
+            <div class="invoker-title">
+                <h2>Invoker</h2>
+                <p>Величайший из магов, владеющий силой всех трех стихий</p>
+            </div>
+        </div>
+        
+        <div class="stats-grid">
+            <div class="stat-card">
+                <i class="fas fa-crown"></i>
+                <h3>29</h3>
+                <p>Уровень героя</p>
+                <div class="progress-bar">
+                    <div class="progress" data-width="95"></div>
+                </div>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-trophy"></i>
+                <h3>3400</h3>
+                <p>MMR рейтинг</p>
+                <div class="progress-bar">
+                    <div class="progress" data-width="70"></div>
+                </div>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-gamepad"></i>
+                <h3>3100</h3>
+                <p>Сыграно игр</p>
+                <div class="progress-bar">
+                    <div class="progress" data-width="85"></div>
+                </div>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-chart-line"></i>
+                <h3>52%</h3>
                 <p>Процент побед</p>
-            </div>
-            <div class="stat">
-                <h3>Иллидан</h3>
-                <p>Любимый герой</p>
-            </div>
-            <div class="stat">
-                <h3>Легенда</h3>
-                <p>Текущий ранг</p>
+                <div class="progress-bar">
+                    <div class="progress" data-width="52"></div>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="jokes" class="jokes fade-in">
-        <h2>Dota 2 приколы</h2>
-        <div class="joke-container">
-            <p class="joke">Почему Русский всегда побеждает в Dota? Потому что у него в запасе всегда есть супер-способность — "Серьёзный разговор"!</p>
+    <section id="abilities" class="invoker-spotlight fade-in">
+        <h2 style="font-family: 'Oxanium', cursive; color: var(--orange); font-size: 2.5rem; margin-bottom: 40px;">Способности Инвокера</h2>
+        
+        <div class="abilities">
+            <div class="ability">
+                <div class="ability-icon">
+                    <i class="fas fa-fire"></i>
+                </div>
+                <h3>Quas</h3>
+                <p>Регенерация и контроль</p>
+            </div>
+            <div class="ability">
+                <div class="ability-icon">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <h3>Wex</h3>
+                <p>Скорость и мощь</p>
+            </div>
+            <div class="ability">
+                <div class="ability-icon">
+                    <i class="fas fa-snowflake"></i>
+                </div>
+                <h3>Exort</h3>
+                <p>Урон и магия</p>
+            </div>
+            <div class="ability">
+                <div class="ability-icon">
+                    <i class="fas fa-hand-sparkles"></i>
+                </div>
+                <h3>Invoke</h3>
+                <p>Призыв заклинаний</p>
+            </div>
         </div>
-        <button class="new-joke">Новый прикол</button>
     </section>
 
-    <section id="social" class="social fade-in">
-        <h2>Мои контакты</h2>
-        <p>Хочешь сыграть вместе или обсудить последний матч? Свяжись со мной!</p>
+    <section id="social" class="social-section fade-in">
+        <h2>Присоединяйся к моему сообществу</h2>
+        <p>Давайте играть вместе или обсудим последние тактики и стратегии!</p>
+        
         <div class="social-links">
-            <a href="https://t.me/fenjeres" target="_blank" class="social-link">Telegram</a>
-            <a href="https://steamcommunity.com/profiles/76561198967972135" target="_blank" class="social-link">Steam</a>
+            <a href="https://t.me/fenjeres" target="_blank" class="social-link">
+                <i class="fab fa-telegram"></i> Telegram
+            </a>
+            <a href="https://steamcommunity.com/profiles/76561198967972135" target="_blank" class="social-link">
+                <i class="fab fa-steam"></i> Steam
+            </a>
+            <a href="#" class="social-link">
+                <i class="fab fa-discord"></i> Discord
+            </a>
         </div>
     </section>
 
@@ -470,12 +695,55 @@
     </footer>
 
     <script>
+        // Создание частиц фона
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 50;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                const size = Math.random() * 5 + 2;
+                const posX = Math.random() * 100;
+                const posY = Math.random() * 100;
+                const delay = Math.random() * 15;
+                const duration = Math.random() * 10 + 15;
+                
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.left = `${posX}vw`;
+                particle.style.top = `${posY}vh`;
+                particle.style.animationDelay = `${delay}s`;
+                particle.style.animationDuration = `${duration}s`;
+                
+                // Случайный цвет частицы (оранжевый или золотой)
+                const colors = ['#FF5722', '#E64A19', '#FFD700', '#FFA500'];
+                const randomColor = colors[Math.floor(Math.random() * colors.length)];
+                particle.style.background = randomColor;
+                
+                particlesContainer.appendChild(particle);
+            }
+        }
+        
+        // Анимация появления элементов при скролле
         const fadeElements = document.querySelectorAll('.fade-in');
         
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
+                    
+                    // Анимация прогресс-баров
+                    if (entry.target.querySelector('.progress-bar')) {
+                        const progressBars = entry.target.querySelectorAll('.progress');
+                        progressBars.forEach(bar => {
+                            const width = bar.getAttribute('data-width');
+                            setTimeout(() => {
+                                bar.style.width = `${width}%`;
+                            }, 300);
+                        });
+                    }
                 }
             });
         }, {
@@ -486,63 +754,7 @@
             observer.observe(element);
         });
         
-        const jokes = [
-            "Почему Русский всегда побеждает в Dota? Потому что у него в запасе всегда есть супер-способность — 'Серьёзный разговор'!",
-            "Знаете, чем отличается керри от саппорта? Керри думает, что он несёт игру, а саппорт знает, что это он несёт керри.",
-            "Идеальный дисейбл в Dota 2 — это когда ты загнал врага под товер, а там стоит твой керри с 10% хп.",
-            "Dota 2 — это единственная игра, где 'я mid или feed' означает, что ты получишь и то, и другое.",
-            "Почему Pudge всегда голоден? Потому что он на диете из хук-линейных супов!",
-            'После игры в низком рейтинге понимаешь, что "Report my team" — это не просьба, а крик души.'
-            'почему дед инсайды не покупают мом на сфа? потому что он напоминает им об их маме'       
-            'Пудж любил жрать Морфлинга, потому, что в нём много соли.'
-            'В молодости у Снайпера спросили - "вилкой в глаз или в жопу раз?" Как вы поняли, в меткости он не потерял.'
-            'пудж это снайпер'
-            'Почему у Снайпера хедшот срабатывает при каждом выстреле даже если на это у него шанс всего лишь 40% Потому что у него мать шл*ха,пошел на х*й...'
-        ];
-        
-        const jokeElement = document.querySelector('.joke');
-        const newJokeButton = document.querySelector('.new-joke');
-        let currentJoke = 0;
-        
-        newJokeButton.addEventListener('click', () => {
-            currentJoke = (currentJoke + 1) % jokes.length;
-            jokeElement.style.opacity = 0;
-            
-            setTimeout(() => {
-                jokeElement.textContent = jokes[currentJoke];
-                jokeElement.style.opacity = 1;
-                
-                createParticles();
-            }, 500);
-        });
-        
-        function createParticles() {
-            const particles = 20;
-            const container = document.querySelector('.joke-container');
-            
-            for (let i = 0; i < particles; i++) {
-                const particle = document.createElement('div');
-                particle.classList.add('dota-particle');
-                particle.innerHTML = '⚡';
-                particle.style.color = '#FF5722';
-                particle.style.position = 'absolute';
-                particle.style.fontSize = Math.random() * 20 + 10 + 'px';
-                particle.style.left = '50%';
-                particle.style.top = '50%';
-                
-                const x = (Math.random() - 0.5) * 300;
-                const y = (Math.random() - 0.5) * 300;
-                particle.style.setProperty('--x', `${x}px`);
-                particle.style.setProperty('--y', `${y}px`);
-                
-                container.appendChild(particle);
-                
-                setTimeout(() => {
-                    particle.remove();
-                }, 2000);
-            }
-        }
-        
+        // Анимация для логотипа
         const logo = document.querySelector('.logo');
         setInterval(() => {
             logo.style.animation = 'none';
@@ -550,6 +762,17 @@
                 logo.style.animation = 'pulse 2s infinite';
             }, 10);
         }, 5000);
+        
+        // Инициализация
+        document.addEventListener('DOMContentLoaded', () => {
+            createParticles();
+            
+            // Инициализация прогресс-баров
+            const progressBars = document.querySelectorAll('.progress');
+            progressBars.forEach(bar => {
+                bar.style.width = '0%';
+            });
+        });
     </script>
 </body>
 </html>
