@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dota 2 Био</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap');
+        
+        :root {
+            --orange: #FF5722;
+            --dark-orange: #E64A19;
+            --black: #121212;
+            --dark-gray: #1E1E1E;
+            --light-gray: #2C2C2C;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+        }
+        
+        body {
+            background-color: var(--black);
+            color: white;
+            overflow-x: hidden;
+        }
+        
+        header {
+            background: linear-gradient(to right, var(--black), var(--dark-gray));
+            padding: 20px;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            border-bottom: 2px solid var(--orange);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: 900;
+            color: var(--orange);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            animation: pulse 2s infinite;
+        }
+        
+        .logo span {
+            color: white;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 700;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: var(--orange);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--orange);
+            transition: width 0.3s;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect fill="%23121212" width="100" height="100"/><path fill="%23E64A19" opacity="0.2" d="M0 0h100v100H0z"/><path fill="%23FF5722" opacity="0.2" d="M0 0h50v50H0z"/></svg>');
+            background-size: cover;
+            position: relative;
+        }
+        
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            animation: fadeInDown 1s ease;
+        }
+        
+        .hero h1 span {
+            color: var(--orange);
+        }
+        
+        .hero p {
+            font-size: 1.5rem;
+            max-width: 800px;
+            margin-bottom: 30px;
+            animation: fadeInUp 1s ease;
+        }
+        
+        .cta-button {
+            padding: 15px 40px;
+            background-color: var(--orange);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            animation: pulse 2s infinite;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .cta-button:hover {
+            background-color: var(--dark-orange);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(230, 74, 25, 0.4);
+        }
+        
+        section {
+            padding: 100px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .about {
+            background-color: var(--dark-gray);
+            border-radius: 20px;
+            margin: 50px auto;
+            padding: 50px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .about::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--orange), var(--black));
+        }
+        
+        .about h2 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: var(--orange);
+            text-align: center;
+        }
+        
+        .about p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+        
+        .dota-stats {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-top: 50px;
+        }
+        
+        .stat {
+            background-color: var(--light-gray);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            margin: 10px;
+            flex: 1;
+            min-width: 250px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s;
+        }
+        
+        .stat:hover {
+            transform: translateY(-10px);
+        }
+        
+        .stat h3 {
+            color: var(--orange);
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        
+        .jokes {
+            background-color: var(--black);
+            text-align: center;
+            padding: 80px 20px;
+        }
+        
+        .jokes h2 {
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: var(--orange);
+        }
+        
+        .joke-container {
+            background-color: var(--dark-gray);
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .joke {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            min-height: 80px;
+        }
+        
+        .new-joke {
+            padding: 15px 40px;
+            background-color: var(--orange);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .new-joke:hover {
+            background-color: var(--dark-orange);
+            transform: scale(1.05);
+        }
+        
+        .social {
+            text-align: center;
+            padding: 80px 20px;
+            background-color: var(--dark-gray);
+            border-radius: 20px;
+            margin: 50px auto;
+        }
+        
+        .social h2 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: var(--orange);
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+        
+        .social-link {
+            display: inline-block;
+            padding: 15px 30px;
+            background-color: var(--orange);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 700;
+            transition: all 0.3s;
+        }
+        
+        .social-link:hover {
+            background-color: var(--dark-orange);
+            transform: translateY(-5px);
+        }
+        
+        footer {
+            background-color: var(--black);
+            padding: 30px;
+            text-align: center;
+            border-top: 2px solid var(--orange);
+        }
+        
+        .dota-icon {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            opacity: 0.1;
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
+            .dota-stats {
+                flex-direction: column;
+            }
+            
+            .social-links {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+        
+        .dota-particle {
+            position: fixed;
+            pointer-events: none;
+            opacity: 0;
+            animation: particle-anim 2s ease-in-out;
+        }
+        
+        @keyframes particle-anim {
+            0% {
+                opacity: 1;
+                transform: translate(0, 0) scale(0.5);
+            }
+            100% {
+                opacity: 0;
+                transform: translate(var(--x), var(--y)) scale(1.5);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Dota<span>2</span>Hub</div>
+            <ul class="nav-links">
+                <li><a href="#about">Обо мне</a></li>
+                <li><a href="#stats">Статистика</a></li>
+                <li><a href="#jokes">Приколы</a></li>
+                <li><a href="#social">Контакты</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Добро пожаловать в мир <span>Dota 2</span></h1>
+        <p>Здесь живут эпические битвы, стратегии и бесконечный fun! Присоединяйся к сообществу настоящих ценителей игры.</p>
+        <a href="#about" class="cta-button">Узнать больше</a>
+    </section>
+
+    <section id="about" class="about fade-in">
+        <h2>Обо мне</h2>
+        <p>Я страстный поклонник Dota 2 с многолетним опытом игры. Моя любовь к этой игре началась ещё с оригинальной DotA, и с момента выхода Dota 2 я не пропустил ни одного крупного обновления.</p>
+        <p>Мой игровой стиль — это комбинация стратегического мышления и молниеносных решений. Я предпочитаю играть за гибридных героев, которые могут адаптироваться к любой ситуации на поле боя.</p>
+        <p>В свободное от игры время я люблю анализировать матчи профессиональных игроков, изучать новые тактики и делиться своими знаниями с сообществом. Dota 2 — это не просто игра, это целая вселенная, в которой я нашел себя.</p>
+    </section>
+
+    <section id="stats" class="about fade-in">
+        <h2>Моя статистика в Dota 2</h2>
+        <div class="dota-stats">
+            <div class="stat">
+                <h3>5000+</h3>
+                <p>Сыгранных матчей</p>
+            </div>
+            <div class="stat">
+                <h3>58%</h3>
+                <p>Процент побед</p>
+            </div>
+            <div class="stat">
+                <h3>Иллидан</h3>
+                <p>Любимый герой</p>
+            </div>
+            <div class="stat">
+                <h3>Легенда</h3>
+                <p>Текущий ранг</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="jokes" class="jokes fade-in">
+        <h2>Dota 2 приколы</h2>
+        <div class="joke-container">
+            <p class="joke">Почему Русский всегда побеждает в Dota? Потому что у него в запасе всегда есть супер-способность — "Серьёзный разговор"!</p>
+        </div>
+        <button class="new-joke">Новый прикол</button>
+    </section>
+
+    <section id="social" class="social fade-in">
+        <h2>Мои контакты</h2>
+        <p>Хочешь сыграть вместе или обсудить последний матч? Свяжись со мной!</p>
+        <div class="social-links">
+            <a href="https://t.me/fenjeres" target="_blank" class="social-link">Telegram</a>
+            <a href="https://steamcommunity.com/profiles/76561198967972135" target="_blank" class="social-link">Steam</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>Dota 2 Fan Site © 2023. Все права защищены. Dota и Dota 2 являются зарегистрированными товарными знаками Valve Corporation.</p>
+    </footer>
+
+    <script>
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+        
+        fadeElements.forEach(element => {
+            observer.observe(element);
+        });
+        
+        const jokes = [
+            "Почему Русский всегда побеждает в Dota? Потому что у него в запасе всегда есть супер-способность — 'Серьёзный разговор'!",
+            "Знаете, чем отличается керри от саппорта? Керри думает, что он несёт игру, а саппорт знает, что это он несёт керри.",
+            "Идеальный дисейбл в Dota 2 — это когда ты загнал врага под товер, а там стоит твой керри с 10% хп.",
+            "Dota 2 — это единственная игра, где 'я mid или feed' означает, что ты получишь и то, и другое.",
+            "Почему Pudge всегда голоден? Потому что он на диете из хук-линейных супов!",
+            'После игры в низком рейтинге понимаешь, что "Report my team" — это не просьба, а крик души.'
+            'почему дед инсайды не покупают мом на сфа? потому что он напоминает им об их маме'       
+            'Пудж любил жрать Морфлинга, потому, что в нём много соли.'
+            'В молодости у Снайпера спросили - "вилкой в глаз или в жопу раз?" Как вы поняли, в меткости он не потерял.'
+            'пудж это снайпер'
+            'Почему у Снайпера хедшот срабатывает при каждом выстреле даже если на это у него шанс всего лишь 40% Потому что у него мать шл*ха,пошел на х*й...'
+        ];
+        
+        const jokeElement = document.querySelector('.joke');
+        const newJokeButton = document.querySelector('.new-joke');
+        let currentJoke = 0;
+        
+        newJokeButton.addEventListener('click', () => {
+            currentJoke = (currentJoke + 1) % jokes.length;
+            jokeElement.style.opacity = 0;
+            
+            setTimeout(() => {
+                jokeElement.textContent = jokes[currentJoke];
+                jokeElement.style.opacity = 1;
+                
+                createParticles();
+            }, 500);
+        });
+        
+        function createParticles() {
+            const particles = 20;
+            const container = document.querySelector('.joke-container');
+            
+            for (let i = 0; i < particles; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('dota-particle');
+                particle.innerHTML = '⚡';
+                particle.style.color = '#FF5722';
+                particle.style.position = 'absolute';
+                particle.style.fontSize = Math.random() * 20 + 10 + 'px';
+                particle.style.left = '50%';
+                particle.style.top = '50%';
+                
+                const x = (Math.random() - 0.5) * 300;
+                const y = (Math.random() - 0.5) * 300;
+                particle.style.setProperty('--x', `${x}px`);
+                particle.style.setProperty('--y', `${y}px`);
+                
+                container.appendChild(particle);
+                
+                setTimeout(() => {
+                    particle.remove();
+                }, 2000);
+            }
+        }
+        
+        const logo = document.querySelector('.logo');
+        setInterval(() => {
+            logo.style.animation = 'none';
+            setTimeout(() => {
+                logo.style.animation = 'pulse 2s infinite';
+            }, 10);
+        }, 5000);
+    </script>
+</body>
+</html>
